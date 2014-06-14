@@ -10,7 +10,7 @@ If you've ever represented money using floats or ints you've likely made a mista
 
 You've just split a penny in half. No good!
 
-If you're using integers you can make the same mistake but it's even harder to notice
+If you're using integers you can make the same mistake but it's even harder to notice:
 
 ```ruby
 1099 / 2 # => 549
@@ -19,7 +19,7 @@ If you're using integers you can make the same mistake but it's even harder to n
 You've just thrown a penny into the well of bad math.
 
 
-Safe Money prevents you from making these sorts of mistakes
+Safe Money prevents you from making these sorts of mistakes:
 
 ```ruby
 10.99.dollars / 2 # => SafeMoney::ArithmeticError: $10.99 cannot be safely divided by 2
@@ -64,7 +64,7 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
+Or, install it yourself as:
 
     $ gem install safe_money
 
