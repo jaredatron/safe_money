@@ -45,12 +45,22 @@ class SafeMoney
     @cents
   end
 
-  %w{ even? odd? zero? to_f < <= == > >= <=> eql? to_json coerce }.each do |method_name|
+  %w{ hash even? odd? zero? to_f < <= == > >= <=> to_json coerce }.each do |method_name|
     class_eval <<-RUBY, __FILE__, __LINE__ + 1
       def #{method_name}(*args, &block)
         to_i.send(:#{method_name}, *args, &block)
       end
     RUBY
+  end
+
+  def eql? other
+    other = other.to_i if self.class === other
+    to_i.eql?(other)
+  end
+
+  def equal? other
+    other = other.to_i if self.class === other
+    to_i.equal?(other)
   end
 
   def to_dollars

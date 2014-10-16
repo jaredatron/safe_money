@@ -288,5 +288,20 @@ describe SafeMoney do
     expect( right ).to eq 1099.0
   end
 
+  # Equality
+
+  it 'treats identical amounts as equal numbers' do
+    a = 10.dollars
+    b = 10.dollars
+    expect( a ).to eq b
+    expect( a ).to equal b
+    expect( a ).to eq 1000
+    expect( a ).to equal 1000
+    expect( a.eql?(1000) ).to be true
+    expect( a.equal?(1000) ).to be true
+    expect( a.eql?(b) ).to be true
+    expect( a.equal?(b) ).to be true
+    expect( [a,b].uniq ).to eq [a]
+  end
 
 end
